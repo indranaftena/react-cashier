@@ -108,7 +108,7 @@ export function Transactions() {
       </div>
       <div className="px-4 py-4 mt-2 mb-4 text-center font-bold bg-sky-800 rounded-b-2xl"></div>
       <CSVDownloader className="w-full p-4 bg-sky-950 rounded-xl" type={Type.Button} filename={`penjualan_${date.toLocaleDateString()}`} bom={true}
-        config={{ delimiter: ';', }} data={salesList}>Download</CSVDownloader>
+        config={{ delimiter: ';', }} data={salesList}>Download Data dalam CSV</CSVDownloader>
     </>
   )
 }

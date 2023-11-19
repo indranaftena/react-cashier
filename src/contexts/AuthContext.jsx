@@ -14,12 +14,13 @@ export function AuthProvider({ children }) {
     function login(userName, password) {
         const encryptedPassword = encryptPassword(password)
         const userID = "qwertyuiop"
-        if (userName === import.meta.env.VITE_USER_NAME) {
-            if (encryptedPassword === import.meta.env.VITE_PASSWORD) {
-                localStorage.setItem('USER', userID)
-                setUser(userID)
-                return userID
-            }
+        if (userName === import.meta.env.VITE_USER_NAME && encryptedPassword === import.meta.env.VITE_PASSWORD) {
+            localStorage.setItem('USER', userID)
+            setUser(userID)
+            return userID
+        }
+        else {
+            return 'wrong_credentials'
         }
         return ''
     }

@@ -35,7 +35,7 @@ export function RecapTransaction({ sales }) {
 			{recap.length > 0 || <div>tidak ada data</div>}
 			{recap.map(({ produk, jumlah, harga }) => {
 				return (
-					<div key={produk} className="px-4 py-4 my-2 grid grid-cols-5 bg-[#181818] rounded-t-2xl">
+					<div key={produk} className="px-4 py-3 my-1 grid grid-cols-5 bg-[#181818]">
 						<div className="text-left col-span-3">{produk}</div>
 						<div className="text-left pl-2">x {jumlah}</div>
 						<div className="text-right">{harga}</div>

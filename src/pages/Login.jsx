@@ -31,7 +31,10 @@ export function Login() {
 
     setLoading(true)
     const logedUser = login(userNameRef.current.value, passwordRef.current.value)
-    if (logedUser) {
+    if (logedUser === 'wrong_credentials') {
+      setMessage('User name dan/atau password salah')
+    }
+    else if (logedUser === "qwertyuiop") {
       navigate("/")
     }
     setLoading(false)
