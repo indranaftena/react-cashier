@@ -6,6 +6,7 @@ import { useLiveQuery } from "dexie-react-hooks"
 import { liveQuery } from "dexie"
 import { db } from "../db"
 import { useCSVDownloader } from "react-papaparse"
+import { RecapTransaction } from "../components/RecapTransaction"
 
 export function Transactions() {
 
@@ -90,6 +91,8 @@ export function Transactions() {
           <p className="text-2xl">{totalSales.toLocaleString('id-ID')}</p>
         </div>
       </div>
+      <RecapTransaction sales={salesList} />
+      <h2 className="my-2 py-2 text-2xl font-bold">Semua Penjualan</h2>
       <div className="px-4 py-4 my-2 grid grid-cols-5 font-bold bg-sky-800 rounded-t-2xl">
         <div className="text-left">Jam</div>
         <div className="text-left col-span-2">Produk</div>
@@ -103,7 +106,7 @@ export function Transactions() {
           </div>
         )) : 'tidak ada data'}
       </div>
-      <div className="px-4 py-4 my-2 text-center font-bold bg-sky-800 rounded-b-2xl"></div>
+      <div className="px-4 py-4 mt-2 mb-4 text-center font-bold bg-sky-800 rounded-b-2xl"></div>
       <CSVDownloader className="w-full p-4 bg-sky-950 rounded-xl" type={Type.Button} filename={`penjualan_${date.toLocaleDateString()}`} bom={true}
         config={{ delimiter: ';', }} data={salesList}>Download</CSVDownloader>
     </>

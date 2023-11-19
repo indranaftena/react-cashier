@@ -56,7 +56,7 @@ function AddEachProduct({ deleteProductData, changeProductData, id, productsList
         <p className="text-right">Harga</p>
         <p className="text-xl text-right">{price}</p>
       </div>
-      <button className="p-2 bg-orange-700" onClick={() => deleteProductData(id)}>Hapus</button>
+      <button className="w-fit p-2 bg-orange-700" onClick={() => deleteProductData(id)}>Hapus</button>
     </div>
   )
 }
@@ -126,7 +126,7 @@ export function AddTransaction({ productsList, setShowInput }) {
   }
 
   return (
-    <div className="p-4 my-2 bg-black rounded-md relative">
+    <div className="p-2 my-2 bg-black rounded-md relative">
       {products.map(product => <AddEachProduct key={product.id} deleteProductData={deleteProductData}
         changeProductData={changeProductData} id={product.id} productsList={productsList} />)}
       <p className="font-bold text-right">Total Harga</p>

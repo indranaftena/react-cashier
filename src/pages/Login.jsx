@@ -40,7 +40,7 @@ export function Login() {
   return (
     <div className="w-screen h-screen absolute inset-0 flex flex-wrap flex-col justify-center content-center">
       {loading && <Loader />}
-      <form className="w-full max-w-xl mb-10">
+      <form className="px-4 w-full max-w-xl mb-10">
         <h1 className=" text-4xl font-bold mb-8">Masuk ke Akun</h1>
         <label htmlFor="userName">User Name</label>
         <input type="text" name="userName" id="userName" ref={userNameRef} />
