@@ -17,8 +17,19 @@ export function Transactions() {
   const [showInput, setShowInput] = useState(false)
   const [showEdit, setShowEdit] = useState(false)
 
+  const [beveragesList, setBaveragesList] = useState([])
   const productsList = useLiveQuery(
-    () => db.products.toArray()
+    async () => {
+      const productsFetched = await db.products.toArray()
+      const drinksList = productsFetched.reduce((list, item) => {
+        if (item.jenis === 'minuman') {
+          list.push(item.produk)
+        }
+        return list
+      }, [])
+      setBaveragesList(drinksList)
+      return productsFetched
+    }
   )
   const [salesList, setSalesList] = useState([])
   const [date, setDate] = useState(new Date(defaultDate))
@@ -44,7 +55,9 @@ export function Transactions() {
       next: result => {
         let currentSubTotal = 0
         for (let i = 0, n = result.length; i < n; i++) {
-          currentSubTotal += result[i].jumlahHarga
+          if (beveragesList.includes(result[i].produk)) {
+            currentSubTotal += result[i].jumlah
+          }
         }
         setSalesList(result)
         setTotalSales(currentSubTotal)
@@ -56,7 +69,7 @@ export function Transactions() {
       subscription.unsubscribe()
     }
 
-  }, [date])
+  }, [date, beveragesList])
 
   function handleDateChange(e) {
     const inputDate = new Date(e.target.value)
@@ -87,8 +100,8 @@ export function Transactions() {
           <input className="w-fit block" type="date" name="date" id="date" defaultValue={defaultDateString} onChange={handleDateChange} />
         </div>
         <div className="text-right">
-          <p className="mb-2">Total Sales</p>
-          <p className="text-2xl">{totalSales.toLocaleString('id-ID')}</p>
+          <p className="mb-2">Cup Terjual</p>
+          <p className="text-2xl">{totalSales}</p>
         </div>
       </div>
       <RecapTransaction sales={salesList} />

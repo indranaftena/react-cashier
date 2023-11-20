@@ -69,10 +69,10 @@ export function EditProduct({ hideForm, product }) {
           <option value="snack">Snack</option>
         </select>
         {message && <div>{message}</div>}
-        <div className="my-4 flex flex-wrap justify-around font-semibold">
-          <button className="py-2 w-32 bg-orange-700" disabled={loading} onClick={handleConfirm}>Hapus</button>
-          <button className="py-2 w-32 bg-blue-700" disabled={loading} onClick={handleEdit}>Ubah</button>
-          <button className="py-2 w-32 bg-green-700" onClick={cancel}>
+        <div className="my-2 flex flex-wrap justify-around font-semibold">
+          <button className="py-2 my-2 w-32 bg-orange-700" disabled={loading} onClick={handleConfirm}>Hapus</button>
+          <button className="py-2 my-2 w-32 bg-blue-700" disabled={loading} onClick={handleEdit}>Ubah</button>
+          <button className="py-2 my-2 w-32 bg-green-700" onClick={cancel}>
             Batal
           </button>
         </div>
