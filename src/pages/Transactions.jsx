@@ -47,8 +47,9 @@ export function Transactions() {
       () => db.sales
         .where('waktu')
         .between(date, tomorrow)
-        .reverse()
-        .sortBy('waktu')
+        .toArray()            // -> remove this line if use code below
+        // .reverse()         // sort list descending
+        // .sortBy('waktu')   // by time added
     )
 
     const subscription = salesObservable.subscribe({
